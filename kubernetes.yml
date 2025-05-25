@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: staragileprojecthealth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: staragileprojecthealth
+  template:
+    metadata:
+      labels:
+        app: staragileprojecthealth
+    spec:
+      containers:
+        - name: staragileproject
+          image: mesiddharth07/staragileprojecthealth:v1
+          ports:
+            - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: staragileprojecthealth
+spec:
+  selector:
+    app: staragileprojecthealth
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+  type: Nodeport

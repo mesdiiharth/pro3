@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Medicure
+  name: medicure
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Medicure
+      app: medicure
   template:
     metadata:
       labels:
-        app: Medicure
+        app: medicure
     spec:
       containers:
         - name: staragileproject
@@ -24,11 +24,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: Medicure
+  name: medicure
 spec:
  type: NodePort
   selector:
-    app: Medicure
+    app: medicure
   ports:
       port: 8081
       targetPort: 8081
